@@ -776,14 +776,18 @@ h2 {
 }
 
 h3 {
+  margin: 0;
   color: #63317F;
   font-size: 18px;
+  line-height:normal;
 }
 
 h4 {
+  margin: 0;
   color: #666666;
   font-weight: normal;
   font-size: 14px;
+  line-height:normal;
 }
 
 h5 {
@@ -5567,7 +5571,7 @@ input[type="submit"].btn.btn-mini {
 .thumbnail {
   display: block;
   padding: 4px;
-  line-height: 20px;
+  line-height: normal;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -5579,6 +5583,7 @@ input[type="submit"].btn.btn-mini {
      -moz-transition: all 0.2s ease-in-out;
        -o-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
+  background-color:white;
 }
 
 a.thumbnail:hover,

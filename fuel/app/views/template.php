@@ -5,7 +5,7 @@
 	<title>LikesTV | <?php echo $title; ?></title>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
-		body { margin: 40px 0px; }
+		body { margin: 40px 0px -20px 0px; }
 	</style>
 </head>
 <body>
