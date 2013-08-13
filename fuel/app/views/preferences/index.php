@@ -12,36 +12,54 @@
 	</div>
 </div>
 
-<p style="color:white">Remove any titles from the list to see them at the channels page again.</p>
-<br>
-<?php if ($preferences): ?>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Email</th>
-			<th>Filter</th>
-			<th>&nbsp;</th>
-		</tr>
-	</thead>
-	<tbody>
-<?php foreach ($preferences as $preference): ?>		<tr>
+<h2>Remove any titles from the list to see them at the channels page again.</h2>
 
-			<td><?php echo $preference->email; ?></td>
-			<td><?php echo $preference->filter; ?></td>
-			<td>
-				<?php echo Html::anchor('preferences/view/'.$preference->id, '<i class="icon-eye-open" title="View"></i>'); ?> |
-				<?php echo Html::anchor('preferences/edit/'.$preference->id, '<i class="icon-wrench" title="Edit"></i>'); ?> |
-				<?php echo Html::anchor('preferences/delete/'.$preference->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?>
+<?php echo Form::open(array("class"=>"form-vertical")); ?>
 
-			</td>
-		</tr>
-<?php endforeach; ?>	</tbody>
-</table>
+	<fieldset>
+		
+		
+		<div class="control-group">
+			<?php echo Form::label('Title', 'filter', array('class'=>'control-label')); ?>
+
+			<div class="controls">
+				<?php echo Form::input('filter', Input::post('filter', isset($preference) ? $preference->filter : ''), array('class' => 'span4', 'placeholder'=>'')); ?>
+
+			</div>
+		</div>
+		<div class="control-group">
+			<label class='control-label'>&nbsp;</label>
+			<div class='controls'>
+				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+		</div>
+	</fieldset>
+<?php echo Form::close(); ?>
+
+<?php
+echo Form::open(array("class"=>"form-vertical", 'action' => 'preferences', 'method' => 'post')); ?>
+	<fieldset>
+
+<?php if (count($preferences)>0): ?>
+
+<?php		
+foreach ($preferences as $pref){
+
+	echo '<label class="checkbox">';
+	echo '<input type="checkbox" name="filtered[]" value="'.$pref->filter.'"> '.$pref->filter;
+	echo '</label>';
+
+}
+?>
+	
+	<div class="control-group">
+			<label class='control-label'>&nbsp;</label>
+			<div class='controls'>
+				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+		</div>
+	</fieldset>
+<?php echo Form::close(); ?>
 
 <?php else: ?>
-<p>No Preferences.</p>
+<h2>Your filter is currently empty.</h2>
 
 <?php endif; ?><p>
-	<?php echo Html::anchor('preferences/create', 'Add new Preference', array('class' => 'btn btn-success')); ?>
-
-</p>

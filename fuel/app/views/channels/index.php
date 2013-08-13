@@ -9,21 +9,26 @@ $facebook = new Facebook(array(
 
 $user = $facebook->getUser();
 $gamelist = array();
-$ttvclientid = '<563pl149qc2s3obor1d7rmm2xuu2io0>';
+$ttvclientid = '563pl149qc2s3obor1d7rmm2xuu2io0';
+$filter = array();
+
+foreach($preferences as $pref){
+	array_push($filter, $pref->filter);
+}
 
 if ($user){
 
 	$user_games = $facebook->api('/me/games');
     
     foreach($user_games["data"] as $game ){
-    	array_push($gamelist, $game["name"]);
+    	if (!(count($filter) > 0 && in_array($game["name"], $filter))){
+    		array_push($gamelist, $game["name"]);
+    	}
     }
     
-	//var_dump($gamelist);
 }else{
 	Response::redirect('home');
 }
-
 
 ?>
 
@@ -40,7 +45,7 @@ if ($user){
 		</ul>
 	</div>
 </div>
-<p style="color:white">Don’t like a particular game? Filter it out! If you want to see it again, you can always manage your filter at the preferences page. </p>
+<h2>Don’t like a particular game? Filter it out! If you want to see it again, you can always manage your filter at the preferences page. </h2>
 
 <?php
 //https://api.twitch.tv/kraken/streams?game=Minecraft

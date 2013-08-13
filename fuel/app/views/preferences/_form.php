@@ -2,10 +2,10 @@
 
 	<fieldset>
 		<div class="control-group">
-			<?php echo Form::label('Email', 'email', array('class'=>'control-label')); ?>
+			<?php echo Form::label('Username', 'username', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('email', Input::post('email', isset($preference) ? $preference->email : ''), array('class' => 'span4', 'placeholder'=>'Email')); ?>
+				<?php echo Form::input('username', Input::post('username', isset($preference) ? $preference->username : ''), array('class' => 'span4', 'placeholder'=>'Username')); ?>
 
 			</div>
 		</div>

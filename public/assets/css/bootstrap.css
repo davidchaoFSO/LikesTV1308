@@ -223,6 +223,7 @@ textarea {
 
 body {
   margin: 0;
+
   font-family: "Myriad Web Pro", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 20px;
@@ -770,6 +771,8 @@ h1 {
 }
 
 h2 {
+  margin:0;
+  line-height:normal;
   color:#FFFFFF;
   font-weight: normal;
   font-size: 12px;

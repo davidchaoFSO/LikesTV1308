@@ -5,7 +5,7 @@ class Model_Preference extends Model
 {
 	protected static $_properties = array(
 		'id',
-		'email',
+		'username',
 		'filter',
 		'created_at',
 		'updated_at',
@@ -25,7 +25,7 @@ class Model_Preference extends Model
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('email', 'Email', 'required|valid_email|max_length[255]');
+		$val->add_field('username', 'Username', 'required|max_length[255]');
 		$val->add_field('filter', 'Filter', 'required|max_length[255]');
 
 		return $val;

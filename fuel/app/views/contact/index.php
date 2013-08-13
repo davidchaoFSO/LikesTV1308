@@ -11,4 +11,4 @@
 		</ul>
 	</div>
 </div>
-<p style="color:white">Have questions or comments? We’ll respond to your email within 1 business day!</p>
+<h2>Have questions or comments? We’ll respond to your email within 1 business day!</h2>
