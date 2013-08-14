@@ -1,110 +1,54 @@
-<?php
-
-require_once APPPATH.'facebook.php';
-
-$facebook = new Facebook(array(
-  'appId' => '515649145162571',
-  'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-));
-
-$user = $facebook->getUser();
-$gamelist = array();
-$ttvclientid = '563pl149qc2s3obor1d7rmm2xuu2io0';
-$filter = array();
-
-foreach($preferences as $pref){
-	array_push($filter, $pref->filter);
-}
-
-if ($user){
-
-	$user_games = $facebook->api('/me/games');
-    
-    foreach($user_games["data"] as $game ){
-    	if (!(count($filter) > 0 && in_array($game["name"], $filter))){
-    		array_push($gamelist, $game["name"]);
-    	}
-    }
-    
-}else{
-	Response::redirect('home');
-}
-
-?>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
-		<a class="brand" href="../home/index"><?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV","width"=>"90"));?></a>
+		<a class="brand" href="../home/"><?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV","width"=>"90"));?></a>
 		<ul class="nav">
-			<li class='<?php echo Arr::get($subnav, "home" ); ?>'><?php echo Html::anchor('home/index','Home');?></li>
-			<li class='<?php echo Arr::get($subnav, "channels" ); ?>'><?php echo Html::anchor('channels/index','Channels');?></li>
-			<li class='<?php echo Arr::get($subnav, "preferences" ); ?>'><?php echo Html::anchor('preferences/index','Preferences');?></li>
-			<li class='<?php echo Arr::get($subnav, "about" ); ?>'><?php echo Html::anchor('about/index','About Us');?></li>
-			<li class='<?php echo Arr::get($subnav, "testimonials" ); ?>'><?php echo Html::anchor('testimonials/index','Testimonials');?></li>
-			<li class='<?php echo Arr::get($subnav, "contact" ); ?>'><?php echo Html::anchor('contact/index','Contact Us');?></li>
+			<li class='<?php echo Arr::get($subnav, "home" ); ?>'><?php echo Html::anchor('home/','Home');?></li>
+			<li class='<?php echo Arr::get($subnav, "channels" ); ?>'><?php echo Html::anchor('channels/','Channels');?></li>
+			<li class='<?php echo Arr::get($subnav, "preferences" ); ?>'><?php echo Html::anchor('preferences/','Preferences');?></li>
+			<li class='<?php echo Arr::get($subnav, "about" ); ?>'><?php echo Html::anchor('about/','About Us');?></li>
+			<li class='<?php echo Arr::get($subnav, "testimonials" ); ?>'><?php echo Html::anchor('testimonials/','Testimonials');?></li>
+			<li class='<?php echo Arr::get($subnav, "contact" ); ?>'><?php echo Html::anchor('contact/','Contact Us');?></li>
 		</ul>
 	</div>
 </div>
 <h2>Don’t like a particular game? Filter it out! If you want to see it again, you can always manage your filter at the preferences page. </h2>
 
+
+
+<ul class="thumbnails">
 <?php
-//https://api.twitch.tv/kraken/streams?game=Minecraft
-//$data = json_decode(file_get_contents("https://api.twitch.tv/kraken/search/games?q=Minecraft&type=suggest"));
-//https://api.twitch.tv/kraken/search/games?q=Minecraft&type=suggest
-//var_dump($data);
-$apiparams = array(
-  'http'=>array(
-    'method' => 'GET',
-    'header' => "Client ID: ".$ttvclientid
-  )
-);
-// run gamelist through search API game search and output it to another array
-$refinelist = array();
-$counter = 0;
-
-foreach($gamelist as $gamename){
-	if ($counter > 10){break;}
-	$gamename = str_replace(" ","+",$gamename);
-	$data = json_decode(file_get_contents('https://api.twitch.tv/kraken/search/games?q='.$gamename.'&type=suggest', false, stream_context_create($apiparams)));
-
-	foreach($data->games as $game){
-		array_push($refinelist, $game->name);
-	}
-
-	//usleep(300000);
-	$counter++;
-}
-
-$streams = array();
-
-foreach($refinelist as $game){
-	$game = str_replace(" ","+",$game);
-	$data = json_decode(file_get_contents('https://api.twitch.tv/kraken/streams?game='.$game, false, stream_context_create($apiparams)));
-
-	foreach($data->streams as $stream){
-		array_push($streams, $stream);
-	}
-	//usleep(300000);
-}
-// run new array through twitch API streams search by game
-
-
-//display stream list
-
-//var_dump($streams);
-
-echo    '<ul class="thumbnails">';
-foreach($streams as $stream){
+	foreach($streams as $stream){
 	echo    '<li>';
-	echo	   '<div class="thumbnail">';
+	echo	'<div class="thumbnail">';
 	echo	   '<img src="'.$stream->preview->medium.'" alt="preview" width=275>';
-	echo	   '<h3>'.$stream->game.'</h3>';
-	echo   '<h4>played by '.$stream->channel->display_name.'</h4>';
+	echo   		'<h3>'.$stream->game.'</h3>';
+	echo   		'<h4>played by '.$stream->channel->display_name.'</h4>';
+
 	echo   '<a href='.$stream->channel->url.' class="btn btn-warning" target="_blank">Watch Now</a>';
+
+	echo 	Form::open(array("class"=>"form-vertical", 'action' => 'channels', 'method' => 'post'));
+	echo 		'<fieldset>';
+	
+	echo  		'<div class="control-group">';
+	  		
+	echo  			'<div class="controls">';
+	echo  			Form::hidden('filter', Input::post('filter', $stream->game), array('class' => 'span4', 'placeholder'=>''));
+	  		
+	echo  			'</div>';
+	echo  		'</div>';
+	
+	echo  		'<div class="control-group">';
+	echo  				'<label class="control-label">&nbsp;</label>';
+	echo  				'<div class="controls">';
+	echo  				Form::submit('submit', 'Filter', array('class' => 'btn btn-inverse'));			
+	echo 				'</div>';
+	echo  		'</div>';
+	echo 		'</fieldset>';
+	echo 	Form::close();
+
 	echo   '</div>';
 	echo   '</li>';
 }
-echo 	'</ul>';
-
-
 ?>
+</ul>;

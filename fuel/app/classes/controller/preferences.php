@@ -90,7 +90,7 @@ class Controller_Preferences extends Controller_Template{
 	}
 
 	//View is not used
-
+	/*
 	public function action_view($id = null)
 	{
 		is_null($id) and Response::redirect('preferences');
@@ -222,5 +222,5 @@ class Controller_Preferences extends Controller_Template{
 
 	}
 
-
+	*/
 }
