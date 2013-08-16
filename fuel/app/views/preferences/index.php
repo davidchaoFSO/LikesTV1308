@@ -30,7 +30,7 @@
 		<div class="control-group">
 			<label class='control-label'>&nbsp;</label>
 			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+				<?php echo Form::submit('submit', 'Add to Filter', array('class' => 'btn btn-primary')); ?>			</div>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>
@@ -54,7 +54,7 @@ foreach ($preferences as $pref){
 	<div class="control-group">
 			<label class='control-label'>&nbsp;</label>
 			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+				<?php echo Form::submit('submit', 'Remove from Filter', array('class' => 'btn btn-primary')); ?>			</div>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>

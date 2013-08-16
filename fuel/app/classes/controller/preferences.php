@@ -13,6 +13,7 @@ class Controller_Preferences extends Controller_Template{
 	  	'secret' => '46c7fe25ef7c1c7e03059024049d676f',
 		));
 
+		// Grabs facebook user, if it exists. This is a check to see if user is logged in
 		$user = $facebook->getUser();
 
 		if ($user){
@@ -30,6 +31,7 @@ class Controller_Preferences extends Controller_Template{
 
 		}
 
+		// Fetches all games in DB that current user has filtered in database	
 		$data['preferences'] = Model_Preference::find('all', array(
 		    'where' => array(array('username', $user_profile["username"]),),
 		    'order_by' => array('updated_at' => 'desc'),));	
@@ -43,22 +45,28 @@ class Controller_Preferences extends Controller_Template{
 		}else{
 			Response::redirect('home');
 		}
+
+		// If either button was pushed on the page, then...
 		if (Input::post()){
 
 			$name = $user_profile["username"];	
 
+
+			// 'filter' is what the user wishes to filter i.e. title was entered into input field
 			if(Input::post('filter')){
 			
 	    	$filter = Input::post('filter');
 
+	    	// Creates database entry to be added
 	    	$preference = Model_Preference::forge(array(
 					'username' => $name,
 					'filter' => $filter,
 				));
 
+	    	// Adds entry to database and refreshes page
 				if ($preference and $preference->save())
 				{
-					Session::set_flash('success', 'Added preference #'.$preference->id.'.');
+					Session::set_flash('success', 'Added '.$preference->filter.' to your filter.');
 
 					Response::redirect('preferences');
 				}
@@ -68,14 +76,20 @@ class Controller_Preferences extends Controller_Template{
 					Session::set_flash('error', 'Could not save preference.');
 				}
 			}
+
+			// 'filtered' is the title or titles already filtered that the user wishes to remove i.e. user checked boxes.
+			// This is an array since multiple checkboxes can be checked.
 			if(Input::post('filtered')){
 				$filtered = Input::post('filtered');
 				foreach($filtered as $game){
+
+					// Fetches all database entries with this title for the current user
 					$record = Model_Preference::find('all', array(
 				    'where' => array(
 				    	array('username', $name),array('filter', $game)),
 				    ));	
 
+					// Deletes the found entries - there could be more than one. 
 				    foreach($record as $record){
 				    	$record->delete();
 				    }
@@ -89,8 +103,11 @@ class Controller_Preferences extends Controller_Template{
 
 	}
 
-	//View is not used
+	
 	/*
+
+	WILL BE DELETED ONCE IT IS CONFIRMED SAFE TO BE REMOVED
+
 	public function action_view($id = null)
 	{
 		is_null($id) and Response::redirect('preferences');

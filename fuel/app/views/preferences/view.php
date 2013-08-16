@@ -1,4 +1,6 @@
-<!--<h2>Viewing <span class='muted'>#<?php echo $preference->id; ?></span></h2>
+<!--WILL BE DELETED ONCE IT IS CONFIRMED SAFE TO BE REMOVED
+
+<h2>Viewing <span class='muted'>#<?php echo $preference->id; ?></span></h2>
 
 <p>
 	<strong>Username:</strong>
