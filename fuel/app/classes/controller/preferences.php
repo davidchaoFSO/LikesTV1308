@@ -94,10 +94,12 @@ class Controller_Preferences extends Controller_Template{
 				    	$record->delete();
 				    }
 				    
-				    Response::redirect('preferences');
+				   
 
 				    
 				}
+				// Moved outside of foreach loop for defect 1
+				Response::redirect('preferences');
 			}
 		}
 

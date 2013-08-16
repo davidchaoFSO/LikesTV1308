@@ -4,6 +4,13 @@ Created by David Chao
 As part of Fullsail University's Web Final Project  
 Copyright 2013
 
+## Status of Defects Found During Alpha
+Defect 1 - Severity 2 - When multiple checkboxes are checked, the remove from filter button only removes one of the checked boxes.  
+Status: fixed.
+
+Defect 2 - Severity 2 - When filter button is clicked on several items on the channels page, only the first clicked game is filtered multiple times.  
+Status: under investigation.
+
 ## What is LikesTV?
 
 LikesTV is a website that lets you view Twitch TV live streams based on video games you've liked on Facebook. You'll also be able to filter out any specific games you don't wish to see in your channels list. (A more robust description to come later.)
