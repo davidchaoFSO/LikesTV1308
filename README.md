@@ -6,10 +6,12 @@ Copyright 2013
 
 ## Status of Defects Found During Alpha
 Defect 1 - Severity 2 - When multiple checkboxes are checked, the remove from filter button only removes one of the checked boxes.  
-Status: fixed.
+Status: fixed.  
+Comments: Flaw in logic. Reload was occurring before database actions were complete.
 
 Defect 2 - Severity 2 - When filter button is clicked on several items on the channels page, only the first clicked game is filtered multiple times.  
-Status: under investigation.
+Status: fixed.  
+Comments: Browsers cache posted variables. Filter actions are now done on another page that redirects back to the channels page so that posted variables are updated correctly.
 
 ## What is LikesTV?
 

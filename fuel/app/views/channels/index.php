@@ -27,7 +27,7 @@
 
 	echo   '<a href='.$stream->channel->url.' class="btn btn-warning" target="_blank">Watch Now</a>';
 
-	echo 	Form::open(array("class"=>"form-vertical", 'action' => 'channels', 'method' => 'post'));
+	echo 	Form::open(array("class"=>"form-vertical", 'action' => 'channels/filter.php', 'method' => 'post'));
 	echo 		'<fieldset>';
 	
 	echo  		'<div class="control-group">';

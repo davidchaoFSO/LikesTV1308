@@ -51,17 +51,6 @@ class Controller_Channels extends Controller_Template
 
 		}
 
-		if (Input::post()){
-			if (Input::post('filter')){
-				$addfilter = Input::post('filter');
-				$preference = Model_Preference::forge(array(
-					'username' => $user_profile["username"],
-					'filter' => $addfilter,
-				));
-				$preference and $preference->save();
-			}
-		}
-
 
 		// Retrieves list of games the logged in user has in their filter from the database
 		$preferences = Model_Preference::find('all', array(
@@ -135,6 +124,43 @@ class Controller_Channels extends Controller_Template
 		$data["subnav"] = array('channels'=> 'active' );
 		$this->template->title = 'Your Recommended Channels';
 		$this->template->content = View::forge('channels/index', $data);
+	}
+
+	public function action_filter()
+	{
+		if (Input::post()){
+			if (Input::post('filter')){
+				$facebook = new Facebook(array(
+			  	'appId' => '515649145162571',
+			  	'secret' => '46c7fe25ef7c1c7e03059024049d676f',
+				));
+
+				try {
+
+				// Retrieve profile information since user is logged in
+					$user_profile = $facebook->api('/me');
+				  
+				  
+				} catch (FacebookApiException $e) {
+
+				  error_log($e);
+				  $user = null;
+
+				}
+				$addfilter = Input::post('filter');
+				$preference = Model_Preference::forge(array(
+					'username' => $user_profile["username"],
+					'filter' => $addfilter,
+				));
+				$preference and $preference->save();
+				$this->template->title = 'Channel Filter';
+				$this->template->content = View::forge('channels/filter');
+				Response::redirect('channels/');
+			}
+		}
+		else{
+			Response::redirect('channels/');
+		}
 	}
 
 }
