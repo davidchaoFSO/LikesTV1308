@@ -26,4 +26,5 @@ else{
 	echo '<a href="'.$loginUrl.'" class="btn btn-large btn-primary">Facebook Login</a>';
 }
 
+echo Asset::img('likestvsplashfinal.png', array("alt" => "LikesTV"));
 ?>

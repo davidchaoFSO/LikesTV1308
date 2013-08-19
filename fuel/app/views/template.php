@@ -3,7 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>LikesTV | <?php echo $title; ?></title>
-	<?php echo Asset::css('bootstrap.css'); ?>
+	<?php 
+	echo Asset::css('bootstrap.css');
+	echo Asset::css('likestv.css'); 
+
+
+
+	?>
 	<style>
 		body { margin: 40px 0px -20px 0px; }
 	</style>
@@ -39,4 +45,9 @@
 <footer style="background-color:black;padding: 20px 0;margin:20px 0">
 			<center style="color:white">&copy;LikesTV 2013. All rights reserved.</center>
 </footer>
+<?php 
+echo Asset::js('http://code.jquery.com/jquery-1.10.0.min.js');
+echo Asset::js('bootstrap.js');
+
+?>
 </html>

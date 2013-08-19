@@ -15,18 +15,34 @@
 <h2>Don’t like a particular game? Filter it out! If you want to see it again, you can always manage your filter at the preferences page. </h2>
 
 
+<div id="myCarousel" class="carousel slide">
+    <!--<ol class="carousel-indicators">
+    <<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
 
-<ul class="thumbnails">
+    <!-- Carousel items -->
+<div class="carousel-inner">
+    <div class="active item">
+    <ul class="thumbnails">
 <?php
+	$counter = 0;
 	foreach($streams as $stream){
+	if($counter==6){
+		echo '</ul>';
+		echo '</div>';
+		echo '<div class="item">';
+		echo '<ul class="thumbnails">';
+		$counter = 0;
+	}
 	echo    '<li>';
 	echo	'<div class="thumbnail">';
-	echo	   '<img src="'.$stream->preview->medium.'" alt="preview" width=275>';
-	echo   		'<h3>'.$stream->game.'</h3>';
+	echo	   '<img src="'.$stream->preview->medium.'" alt="preview" width=290>';
+	echo   		'<h3 title="'.$stream->game.'"">'.$stream->game.'</h3>';
 	echo   		'<h4>played by '.$stream->channel->display_name.'</h4>';
 
-	echo   '<a href='.$stream->channel->url.' class="btn btn-warning" target="_blank">Watch Now</a>';
-
+	
 	echo 	Form::open(array("class"=>"form-vertical", 'action' => 'channels/filter.php', 'method' => 'post'));
 	echo 		'<fieldset>';
 	
@@ -39,9 +55,12 @@
 	echo  		'</div>';
 	
 	echo  		'<div class="control-group">';
-	echo  				'<label class="control-label">&nbsp;</label>';
+	//echo  				'<label class="control-label">&nbsp;</label>';
 	echo  				'<div class="controls">';
-	echo  				Form::submit('submit', 'Filter', array('class' => 'btn btn-inverse'));			
+	//echo   '<a href='.$stream->channel->url.' class="btn btn-warning watch" target="_blank">Watch Now</a>';
+	echo 	Html::anchor($stream->channel->url, 'Watch Now',array('class'=>'btn btn-warning watch','target'=>'_blank'));
+
+	echo  				Form::submit('submit', 'Filter Game', array('class' => 'btn btn-inverse filterbtn','data-loading-text)'=>'Filtering...'));			
 	echo 				'</div>';
 	echo  		'</div>';
 	echo 		'</fieldset>';
@@ -49,6 +68,22 @@
 
 	echo   '</div>';
 	echo   '</li>';
+	$counter++;
 }
 ?>
-</ul>;
+	<!-- closing tags for last stream -->
+	</ul>
+    </div>
+</div>
+
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+
+
+
+
+
+
