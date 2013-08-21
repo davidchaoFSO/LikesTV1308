@@ -15,8 +15,12 @@ class Controller_Preferences extends Controller_Template{
 
 		// Grabs facebook user, if it exists. This is a check to see if user is logged in
 		$user = $facebook->getUser();
+		$data = array();
+		$sessionlogout = 'http://localhost:8888/likestv/public/logout';
 
 		if ($user){
+
+		$data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
 
 		try {
 

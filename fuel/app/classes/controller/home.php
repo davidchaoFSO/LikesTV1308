@@ -6,6 +6,8 @@ class Controller_Home extends Controller_Template
 	public function action_index($redirect=array())
 	{
 
+		// Facebook app credentials
+
 		$facebook = new Facebook(array(
 		  'appId' => '515649145162571',
 		  'secret' => '46c7fe25ef7c1c7e03059024049d676f',
@@ -21,7 +23,7 @@ class Controller_Home extends Controller_Template
 		if ($user) {
 
 		  $data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
-
+		  $data['url'] = '';
 		  try {
 
 		    // Retrieve profile information since user is logged in
@@ -30,18 +32,20 @@ class Controller_Home extends Controller_Template
 		    
 		  } catch (FacebookApiException $e) {
 
-		    var_dump($e);
+		    error.log($e);
 		    $user = null;
 
 		  }
+		  //Response::redirect('/home');
 
 		} else {
-		  $data['loginUrl'] = $facebook->getLoginUrl(array('scope'=>'user_likes'));
+		  $data['url'] = $facebook->getLoginUrl(array('scope'=>'user_likes'));
+
 		}
 
 		$data['user'] = $user;
 		$data["subnav"] = array('home'=> 'active' );
-		$this->template->title = 'Home';
+		$this->template->title = 'Welcome to LikesTV!';
 		$this->template->content = View::forge('home/index', $data);
 	}
 

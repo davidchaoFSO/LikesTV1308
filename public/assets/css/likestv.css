@@ -110,11 +110,46 @@ background-color:white;
 
 .watch{
 	margin:10px 10px;
-	
+
 }
 .filterbtn{
 	float:right;
 	margin:10px 10px;
 
+
+}
+
+.whitebg{
+	font-size: 14px;
+	background-color:white;
+	margin-right:0px;
+	padding-right:0px;
+	padding:10px 10px 0 10px;
+
+}
+
+.whitebg .checkbox{
+	font-size:14px;
+	margin-right:20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.whitebg .control-label{
+	font-size:14px;
+	
+}
+
+.loginbtn{
+	display:block;
+	float:right;
+	position:relative;
+	right:80px;
+	bottom:120px;
+
+}
+
+.splashimg{
 
 }
