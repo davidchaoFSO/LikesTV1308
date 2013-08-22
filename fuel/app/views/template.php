@@ -2,9 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>LikesTV | <?php echo $title; ?></title>
 	<?php 
 	echo Asset::css('bootstrap.min.css');
+	echo Asset::css('bootstrap-responsive.min.css');
 	echo Asset::css('likestv.css'); 
 
 
@@ -13,12 +15,12 @@
 	<style>
 		body { margin: 40px 0px 0px 0px; }
 	</style>
+	
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="span12">
-			<h1><?php echo $title; ?></h1>
-			<hr>
+			
 <?php if (Session::get_flash('success')): ?>
 			<div class="alert alert-success">
 				<strong>Success</strong>

@@ -67,8 +67,8 @@ padding: 10px 20px 10px;
 }
 
 .thumbnail {
-width: 290px;
-height:290px;
+width: 300px;
+height:300px;
 line-height: normal;
 background-color:white;
 }
@@ -136,23 +136,104 @@ background-color:white;
 	overflow: hidden;
 }
 
-.whitebg .control-label{
-	font-size:14px;
-	
-}
-
-.loginbtn{
-	display:block;
-	float:right;
-	position:relative;
-	right:80px;
-	bottom:120px;
-
-}
 
 .addressblock{
 	display:block;
 	float:right;
 	padding-top:10px;
 	padding-right:0px;
+}
+
+
+    /* Large desktop */
+@media (min-width: 979px) {
+	.splashimg{
+		display:block;
+		margin:auto;
+		margin-top:40px;
+	}
+     .loginbtn{
+		display:block;
+		width:278px;
+		margin: auto;
+		position:relative;
+		left:270px;
+		bottom:90px;
+	}
+	.loginbtn img{
+		display:block;
+		margin: auto;
+		
+	}
+	.carousel{
+		width:960px;
+	}
+}
+     
+    /* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.loginbtn{
+	display:block;
+	width:278px;
+	float:right;
+	position:relative;
+	right:50px;
+	bottom:90px;
+
+	}
+
+	.carousel{
+		width:650px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.loginbtn{
+	display:block;
+	width:278px;
+	float:none;
+	clear:both;
+	position:relative;
+	right:0px;
+	bottom:90px;
+	margin:20px auto;
+	padding:auto;
+
+}
+	.loginbtn img{
+		display:block;
+		margin: auto;
+		
+	}
+
+	.carousel{
+		width:auto;
+	}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	.splashimg{
+		visibility: hidden;
+	}
+
+	.loginbtn{
+	display:block;
+	width:auto;
+	float:none;
+	clear:both;
+	position:static;
+	right:0px;
+	bottom:0px;
+	
+
+}
+	.loginbtn img{
+		display:block;
+		margin: auto;
+		
+	}
+
+	
 }

@@ -1,7 +1,13 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
+		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</a>
 		<a class="brand" href=""><?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV","width"=>"90"));?></a>
+		<div class="nav-collapse collapse">
 		<ul class="nav">
 			<li class='<?php echo Arr::get($subnav, "home" ); ?>'><?php echo Html::anchor('home/','Home');?></li>
 		<?php if($user): ?>
@@ -16,10 +22,11 @@
 		<?php endif; ?>
 		</ul>
 	</div>
+	</div>
 </div>
 
 <?php
-
+/*
 // Test Login Button
 if ($user){
 echo '<h2>Welcome '.$user_profile["first_name"].'!</h2>';
@@ -28,9 +35,11 @@ echo '<h2>Welcome '.$user_profile["first_name"].'!</h2>';
 else{
 	echo '<h2>You are not logged in.</h2>';
 //	echo '<a href="'.$loginUrl.'" class="btn btn-large btn-primary">Facebook Login</a>';
-}
+}*/
 
 echo Asset::img('likestvsplashfinal.png', array("alt" => "LikesTV", "class"=>"splashimg"));
-echo HTML::anchor($url,Asset::img('FBLogin_278x44.png', array("alt" => "Log In Here!", "class"=>"loginbtn")));
+
+echo HTML::anchor($url,Asset::img('FBLogin_278x44.png', array("alt" => "Log In Here!")),array("class"=>"loginbtn"));
+
 
 ?>

@@ -1,6 +1,12 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
+		 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</a>
 		<a class="brand" href="../home/"><?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV","width"=>"90"));?></a>
+		<div class="nav-collapse collapse">
 		<ul class="nav">
 			<?php if(!$user): ?>
 			<li class='<?php echo Arr::get($subnav, "home" ); ?>'><?php echo Html::anchor('home/','Home');?></li>
@@ -17,13 +23,15 @@
 			<?php endif; ?>
 		</ul>
 	</div>
+	</div>
 </div>
+<h1>Contact Us</h1>
+<hr>
 <h2>Have questions or comments? We’ll respond to your email within 1 business day!</h2>
-
 <div class="whitebg">
-	<div class = "row">
+	<div class = "row-fluid">
 		<!-- form -->
-		<div class = "span8">
+		<div class = "span9">
 		<?php echo Form::open(array("class"=>"form-vertical")); ?>			
 			<fieldset>
 
@@ -39,7 +47,7 @@
 					<?php echo Form::label('Message', 'message', array('class'=>'control-label')); ?>
 
 					<div class="controls">
-						<?php echo Form::textarea('message', Input::post('message', ''), array('class'=>'span8','rows'=>6, 'placeholder'=>'Enter your email address here.', 'required', 'maxlength'=>2048)); ?>
+						<?php echo Form::textarea('message', Input::post('message', ''), array('class'=>'span8','rows'=>6, 'placeholder'=>'Enter your message here.', 'required', 'maxlength'=>2048)); ?>
 
 					</div>
 				</div>
