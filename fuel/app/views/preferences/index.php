@@ -26,7 +26,7 @@
 			<?php echo Form::label('Title', 'filter', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('filter', Input::post('filter', isset($preference) ? $preference->filter : ''), array('class' => 'span4', 'placeholder'=>'Enter the title you wish to filter here.')); ?>
+				<?php echo Form::input('filter', Input::post('filter', ''), array('class' => 'span4', 'placeholder'=>'Enter the title you wish to filter here.')); ?>
 
 			</div>
 		</div>
@@ -51,26 +51,26 @@
 	$counter = 0;	
 	foreach ($preferences as $pref){
 
-	if($counter==0){
-		echo '<div class = "row">';
-		
-	}
+		if($counter==0){
+			echo '<div class = "row">';
+			
+		}
 
-	echo '<div class = "span3" style="height:36px" title="'.$pref->filter.'">';
-	echo '<label class="checkbox ">';
-	echo '<input type="checkbox" name="filtered[]"  value="'.$pref->filter.'"> '.$pref->filter;
-	echo '</label>';
-	echo '</div>';
-
-	if($counter==3){
+		echo '<div class = "span3" style="height:36px" title="'.$pref->filter.'">';
+		echo '<label class="checkbox ">';
+		echo '<input type="checkbox" name="filtered[]"  value="'.$pref->filter.'"> '.$pref->filter;
+		echo '</label>';
 		echo '</div>';
-	}
 
-	$counter++;
+		if($counter==3){
+			echo '</div>';
+		}
 
-	if($counter > 3){
-		$counter = 0;
-	}
+		$counter++;
+
+		if($counter > 3){
+			$counter = 0;
+		}
 	} 
 
 	if($counter !==0){
@@ -88,7 +88,7 @@
 	<?php echo Form::close(); ?>
 
 <?php else: ?>
-<h2>Your filter is currently empty.</h2>
+<p>Your filter is currently empty.</p>
 
 <?php endif; ?><p>
 </div>

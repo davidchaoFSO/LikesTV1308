@@ -32,7 +32,7 @@ class Controller_Home extends Controller_Template
 		    
 		  } catch (FacebookApiException $e) {
 
-		    error.log($e);
+		    error_log($e);
 		    $user = null;
 
 		  }
