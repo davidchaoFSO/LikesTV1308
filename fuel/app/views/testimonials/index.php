@@ -27,4 +27,7 @@
 </div>
 <h1>Testimonials</h1>
 <hr>
-<h2></h2>
+<h2>Hear what our users have to say about LikesTV!</h2>
+<div class = "whitebg">
+	<p>This area is reserved for future feedback.</p>
+</div>
