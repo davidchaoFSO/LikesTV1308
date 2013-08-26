@@ -18,8 +18,10 @@ web1:
   php_short_open_tag: Off
   php_date_timezone: US/central
 
-  after_build:
-    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
+
+ after_build:
+    - "curl -s https://getcomposer.org/installer | php"
+    - "php composer.phar install"
 
  
 db1:
