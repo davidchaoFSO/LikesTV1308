@@ -62,8 +62,8 @@
 		</div>
 		<!-- contact info -->
 		<div class = "span3 addressblock">
-		<?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV", "width"=>"125px"));?>
-		<div class = "">
+		<?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV", "width"=>"125"));?>
+		
 		<p>DCWeb Innovations, Inc.<br>
 		P.O. Box XXXXX<br>
 		Plano, Texas 75025<br>
@@ -71,7 +71,7 @@
 		<p>Phone: 555-555-5555<br>
 			Fax: 555-555-5556
 		</p>
-		</div>
+		
 		</div>
 	</div>
 </div>

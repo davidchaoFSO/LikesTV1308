@@ -148,6 +148,16 @@ background-color:white;
 .FAQimg{
 	padding-left:10px;
 }
+
+.footer{
+	display:block;
+	background-color:black;
+	padding: 20px 0;
+	margin:0px 0;
+	color:white;
+	text-align:center;
+}
+
     /* Large desktop */
 @media (min-width: 979px) {
 	.splashimg{
@@ -201,7 +211,7 @@ background-color:white;
 	right:0px;
 	bottom:90px;
 	margin:20px auto;
-	padding:auto;
+	
 
 }
 	.loginbtn img{

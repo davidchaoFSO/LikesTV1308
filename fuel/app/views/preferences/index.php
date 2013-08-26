@@ -23,9 +23,9 @@
 <h1>Your Preferences</h1>
 <hr>
 <h2>Remove any titles from the list to see them at the channels page again.</h2>
-
-<?php echo Form::open(array("class"=>"form-vertical")); ?>
 <div class='whitebg'>
+<?php echo Form::open(array("class"=>"form-vertical")); ?>
+
 	<div class = 'row'>
 	<fieldset>
 		
@@ -41,7 +41,7 @@
 		<div class="control-group span4">
 			<label class='control-label'>&nbsp;</label>
 			<div class='controls'>
-				<?php echo Form::submit('submit', 'Add to Filter', array('class' => 'btn btn-primary btn-inverse')); ?>			</div>
+				<?php echo Form::submit('submit', 'Add to Filter', array('class' => 'btn btn-primary btn-inverse', 'id'=>'fitler_add')); ?>			</div>
 		</div>
 	</fieldset>
 </div>
@@ -89,7 +89,9 @@
 	<div class="control-group span12">
 			<!--<label class='control-label'>&nbsp;</label>-->
 			<div class='controls'>
-				<?php echo Form::submit('submit', 'Remove from Filter', array('class' => 'btn btn-primary btn-warning')); ?>			</div>
+				<?php echo Form::submit('submit', 'Remove from Filter', array('class' => 'btn btn-primary btn-warning', 'id'=>'filter_remove')); ?>			
+			</div>
+
 		</div>
 	</div>
 	</fieldset>

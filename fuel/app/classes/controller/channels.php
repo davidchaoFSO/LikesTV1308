@@ -69,7 +69,7 @@ class Controller_Channels extends Controller_Template
 
 		// Checks the filter against the list of "liked" games from facebook to create the list that will be used to retrieve streams
 		foreach($user_games["data"] as $game ){
-    	if (!(count($filter) > 0 && in_array($game["name"], $filter))&& !in_array($game["name"],$gamelist))
+    	if (!(count($filter) > 0 && in_array($game["name"], $filter)))
     		{
     		array_push($gamelist, $game["name"]);
     		
@@ -94,7 +94,7 @@ class Controller_Channels extends Controller_Template
 
 			// Each game returned from the above call is pushed into $refinelist
 			foreach($apidata->games as $game){
-				if (!in_array($game->name, $filter)) {
+				if (!in_array($game->name, $filter)&& !in_array($game->name,$refinelist)) {
 					array_push($refinelist, $game->name);
 				}
 			}

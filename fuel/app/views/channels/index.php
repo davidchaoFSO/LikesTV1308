@@ -49,7 +49,7 @@
 	echo    '<li>';
 	echo	'<div class="thumbnail">';
 	echo	   '<img src="'.$stream->preview->medium.'" alt="preview" width=300>';
-	echo   		'<h3 title="'.$stream->game.'"">'.$stream->game.'</h3>';
+	echo   		'<h3 title="'.$stream->game.'">'.$stream->game.'</h3>';
 	echo   		'<h4>played by '.$stream->channel->display_name.'</h4>';
 
 	
@@ -59,7 +59,7 @@
 	echo  		'<div class="control-group">';
 	  		
 	echo  			'<div class="controls">';
-	echo  			Form::hidden('filter', Input::post('filter', $stream->game), array('class' => 'span4', 'placeholder'=>''));
+	echo  			Form::hidden('filter', Input::post('filter', $stream->game), array('class' => 'span4', 'id'=>'filter_'.$stream->_id));
 	  		
 	echo  			'</div>';
 	echo  		'</div>';
@@ -70,7 +70,7 @@
 	//echo   '<a href='.$stream->channel->url.' class="btn btn-warning watch" target="_blank">Watch Now</a>';
 	echo 	Html::anchor($stream->channel->url, 'Watch Now',array('class'=>'btn btn-warning watch','target'=>'_blank'));
 
-	echo  				Form::submit('submit', 'Filter Game', array('class' => 'btn btn-inverse filterbtn','data-loading-text)'=>'Filtering...'));			
+	echo  				Form::submit('submit', 'Remove Game', array('class' => 'btn btn-inverse filterbtn','id'=>'submit_'.$stream->_id));			
 	echo 				'</div>';
 	echo  		'</div>';
 	echo 		'</fieldset>';

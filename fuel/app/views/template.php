@@ -43,13 +43,15 @@
 		</div>
 		
 	</div>
-</body>
-<footer style="background-color:black;padding: 20px 0;margin:0px 0">
-			<center style="color:white">&copy;LikesTV 2013. All rights reserved.</center>
-</footer>
+	<div class = "footer">
+			<p>&copy;LikesTV 2013. All rights reserved.</p>
+</div>
+
 <?php 
 echo Asset::js('http://code.jquery.com/jquery-1.10.0.min.js');
 echo Asset::js('bootstrap.min.js');
 
 ?>
+</body>
+
 </html>
