@@ -20,9 +20,9 @@ web1:
   php_short_open_tag: Off
   php_date_timezone: US/central
 
-  #after_build:
-  #  - "curl -s https://getcomposer.org/installer | php"
-  #  - "php composer.phar update"
+  after_build:
+    - "curl -s https://getcomposer.org/installer | php"
+    - "php composer.phar update"
 
 db1:
   type: mysql
