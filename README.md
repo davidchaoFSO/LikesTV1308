@@ -4,6 +4,10 @@ Created by David Chao
 As part of Fullsail University's Web Final Project  
 Copyright 2013
 
+## Issues found during beta
+
+1. Duplicate checking e.g. "The Legend of Zelda" and "The Legend of Zelda: Ocarina of Time" in the likes list will produce dupes. Fixed.
+
 ## What is LikesTV?
 
 LikesTV is a website that lets you view Twitch TV live streams based on video games you've liked on Facebook. You'll also be able to filter out any specific games you don't wish to see in your channels list. (A more robust description to come later.)

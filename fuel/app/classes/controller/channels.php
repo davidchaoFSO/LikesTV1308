@@ -69,7 +69,8 @@ class Controller_Channels extends Controller_Template
 
 		// Checks the filter against the list of "liked" games from facebook to create the list that will be used to retrieve streams
 		foreach($user_games["data"] as $game ){
-    	if (!(count($filter) > 0 && in_array($game["name"], $filter))){
+    	if (!(count($filter) > 0 && in_array($game["name"], $filter))&& !in_array($game["name"],$gamelist))
+    		{
     		array_push($gamelist, $game["name"]);
     		
     		}
