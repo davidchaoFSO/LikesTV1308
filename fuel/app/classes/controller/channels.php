@@ -83,7 +83,7 @@ class Controller_Channels extends Controller_Template
 		foreach($gamelist as $gamename){
 
 			// This is a temporary throttle to the data for testing. Performance enhancements coming to improve this in the future.
-			if ($counter > 5){break;}
+			if ($counter > 15){break;}
 
 			// Spaces are replaced with pluses
 			$gamename = str_replace(" ","+",$gamename);
