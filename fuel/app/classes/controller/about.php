@@ -15,7 +15,7 @@ class Controller_About extends Controller_Template
 		$user = $facebook->getUser();
 
 		$data = array();
-		$sessionlogout = 'http://localhost:8888/likestv/public/logout';
+		$sessionlogout = 'http://likestv.gopagoda.com/logout';
 
 		if ($user) {
 

@@ -18,7 +18,7 @@ class Controller_Home extends Controller_Template
 
 		// The redirect is needed because facebook's logout url function doesn't actually clear session variables
 
-		$sessionlogout = 'http://localhost:8888/likestv/public/logout';
+		$sessionlogout = 'http://likestv.gopagoda.com/logout';
 
 		if ($user) {
 

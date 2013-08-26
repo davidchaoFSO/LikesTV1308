@@ -35,7 +35,7 @@ class Controller_Channels extends Controller_Template
 		$refinelist = array();	// The list of games after $gamelist is run through Twitch's game search
 		$streams = array();		// Contains the streams after refinelist is run through Twitch's Stream search
 		$data = array();
-		$sessionlogout = 'http://localhost:8888/likestv/public/logout';
+		$sessionlogout = 'http://likestv.gopagoda.com/logout';
 		
 		if ($user){
 
