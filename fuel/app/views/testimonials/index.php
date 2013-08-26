@@ -31,3 +31,6 @@
 <div class = "whitebg">
 	<p>This area is reserved for future feedback.</p>
 </div>
+<?php
+phpinfo();
+?>
