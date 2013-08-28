@@ -26,16 +26,6 @@
 </div>
 
 <?php
-/*
-// Test Login Button
-if ($user){
-echo '<h2>Welcome '.$user_profile["first_name"].'!</h2>';
-//echo '<a href="'.$logoutUrl.'" class="btn btn-large btn-primary">Facebook Logout</a>';
-}
-else{
-	echo '<h2>You are not logged in.</h2>';
-//	echo '<a href="'.$loginUrl.'" class="btn btn-large btn-primary">Facebook Login</a>';
-}*/
 
 echo Asset::img('likestvsplashfinal.png', array("alt" => "LikesTV", "class"=>"splashimg"));
 

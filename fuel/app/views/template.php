@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="Find live video games on Twitch by game" name="description">
+	<meta content="likestv, video game streams, twitch streams, watch live streams, watch streams, watch video games, watch games, live streams, facebook, video games" name="keywords">
 	<title>LikesTV | <?php echo $title; ?></title>
 	<?php 
 	echo Asset::css('bootstrap.min.css');
@@ -15,7 +17,16 @@
 	<style>
 		body { margin: 40px 0px 0px 0px; }
 	</style>
-	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43580000-1', 'gopagoda.com');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <body>
 	<div class="container-fluid">

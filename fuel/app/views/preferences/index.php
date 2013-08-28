@@ -9,7 +9,6 @@
 		<a class="brand" href="../home/"><?php echo Asset::img('LTVlogo.png', array("alt" => "LikesTV","width"=>"90"));?></a>
 		<div class="nav-collapse collapse">
 		<ul class="nav">
-			<!--<li class='<?php echo Arr::get($subnav, "home" ); ?>'><?php echo Html::anchor('home/','Home');?></li>-->
 			<li class='<?php echo Arr::get($subnav, "channels" ); ?>'><?php echo Html::anchor('channels/','Channels');?></li>
 			<li class='<?php echo Arr::get($subnav, "preferences" ); ?>'><?php echo Html::anchor('preferences/','Preferences');?></li>
 			<li class='<?php echo Arr::get($subnav, "about" ); ?>'><?php echo Html::anchor('about/','About Us');?></li>
@@ -87,7 +86,7 @@
 	?>
 	<div class='row'>
 	<div class="control-group span12">
-			<!--<label class='control-label'>&nbsp;</label>-->
+			
 			<div class='controls'>
 				<?php echo Form::submit('submit', 'Remove from Filter', array('class' => 'btn btn-primary btn-warning', 'id'=>'filter_remove')); ?>			
 			</div>

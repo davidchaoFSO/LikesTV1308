@@ -29,6 +29,15 @@
 <hr>
 <h2>Hear what our users have to say about LikesTV!</h2>
 <div class = "whitebg">
+	<div class = "row">
+	<div class = "span5">
+	<h3>Developer Comments</h3>
+	<i>"Greetings Facebook users and Twitch stream watchers! We are pleased to bring you LikesTV - a new way for you to discover new video games streams categorized by game. The idea started out as a way for users to "follow" an entire game instead of just by individual channel, but we've also added features for you to further customize your recommended channels. We've got more features on the way, so please enjoy!"</i><p style = "text-align:right"> - David Chao, Lead Web Developer</p>
+	</div>
+	<div class = "span6">
+	<h3>Feedback</h3>
 	<p>This area is reserved for future feedback.</p>
+</div>
+</div>
 </div>
 

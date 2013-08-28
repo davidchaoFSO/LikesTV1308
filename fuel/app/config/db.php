@@ -8,20 +8,21 @@
 return array(
 
 'default' => array(
-		'type'			=> 'mysql',
-		'connection'	=> array(
-			'hostname'		=> $_SERVER['DB1_HOST'],
-			'username'		=> $_SERVER['DB1_USER'],
-			'password'		=> $_SERVER['DB1_PASS'],
-			'database'		=> $_SERVER['DB1_NAME'],
-			'persistent'	=> false,
-			'port'			=> $_SERVER['DB1_PORT']
-		),
-		'identifier'	=> '`',
-		'table_prefix'	=> '',
-		'charset'		=> 'utf8',
-		'enable_cache'	=> true,
-		'profiling'		=> false,
-	
-	),
+
+    'type'      => 'mysql',
+    'connection'  => array(
+      'hostname'    => '127.0.0.1',
+      'username'    => 'root',
+      'password'    => 'root',
+      'database'    => 'ltvprofile',
+      'persistent'  => false,
+      'port'      => '8889'
+    ),
+    'identifier'  => '`',
+    'table_prefix'  => '',
+    'charset'    => 'utf8',
+    'enable_cache'  => true,
+    'profiling'    => false,
+  
+  ), 
 );

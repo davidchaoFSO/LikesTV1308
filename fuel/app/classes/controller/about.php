@@ -7,18 +7,17 @@ class Controller_About extends Controller_Template
 	{
 		// Facebook app credentials
 
-		$facebook = new Facebook(array(
-		  'appId' => '515649145162571',
-		  'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-		));
+		require APPPATH.'likestv.php';
 
 		$user = $facebook->getUser();
 
 		$data = array();
 		$sessionlogout = 'http://likestv.gopagoda.com/logout';
 
+		// If user is logged in:
 		if ($user) {
 
+		  // Logout url set for navbar
 		  $data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
 
 		}

@@ -8,10 +8,7 @@ class Controller_Home extends Controller_Template
 
 		// Facebook app credentials
 
-		$facebook = new Facebook(array(
-		  'appId' => '515649145162571',
-		  'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-		));
+		require APPPATH.'likestv.php';
 
 		$user = $facebook->getUser();
 		$data = array();
@@ -22,11 +19,17 @@ class Controller_Home extends Controller_Template
 
 		if ($user) {
 
+		  // If user is logged in, a logout URL needs to be set.
+
 		  $data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
+
+		  // If user is logged in, the "Connect" button reloads home page
+
 		  $data['url'] = '';
 		  try {
 
 		    // Retrieve profile information since user is logged in
+		    
 		  	$data['user_profile'] = $facebook->api('/me');
 		    
 		    
@@ -36,16 +39,19 @@ class Controller_Home extends Controller_Template
 		    $user = null;
 
 		  }
-		  //Response::redirect('/home');
 
 		} else {
+
+		  // If user is not logged in, the "Connect" button becomes a login button
+		  // Logins permissions include standard + user likes ONLY. If more permissions are needed, it needs to be set here
+
 		  $data['url'] = $facebook->getLoginUrl(array('scope'=>'user_likes'));
 
 		}
 
 		$data['user'] = $user;
 		$data["subnav"] = array('home'=> 'active' );
-		$this->template->title = 'Welcome to LikesTV!';
+		$this->template->title = 'Find live streams of your favorite video games | Powered by Twitch and Facebook';
 		$this->template->content = View::forge('home/index', $data);
 	}
 

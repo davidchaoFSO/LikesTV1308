@@ -52,7 +52,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<!--<label class='control-label'>&nbsp;</label>-->
+					
 					<div class='controls'>
 						<?php echo Form::submit('submit', 'Send Email', array('class' => 'btn btn-primary btn-warning')); ?>			
 					</div>

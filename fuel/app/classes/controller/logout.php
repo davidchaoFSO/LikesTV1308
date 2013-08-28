@@ -5,6 +5,7 @@ class Controller_Logout extends Controller_Template
 
 	public function action_index()
 	{
+		// Logout destroys all session variables and redirects home
 		session_start();
 		$_SESSION = array();
 		session_destroy();

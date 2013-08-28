@@ -21,7 +21,7 @@ web1:
   php_date_timezone: US/central
 
   after_build:
-    - "curl -s https://getcomposer.org/installer | php"
+    # - "curl -s https://getcomposer.org/installer | php"
     - "php composer.phar update"
 
 db1:

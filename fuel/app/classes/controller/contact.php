@@ -7,10 +7,7 @@ class Controller_Contact extends Controller_Template
 	{
 		// Facebook app credentials
 
-		$facebook = new Facebook(array(
-		  'appId' => '515649145162571',
-		  'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-		));
+		require APPPATH.'likestv.php';
 
 		$user = $facebook->getUser();
 
@@ -19,11 +16,14 @@ class Controller_Contact extends Controller_Template
 
 		if ($user) {
 
+		  // Sets logout url for navbar
 		  $data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
 
 		}
+
 		$data['user'] = $user;
 
+		// If Send Email button was pushed: 
 		if (Input::post()){
 			$email = Email::forge();
 			$from = Input::post('emaddress');
@@ -44,6 +44,7 @@ class Controller_Contact extends Controller_Template
 
 			try
 			{
+				// Sends the email
 			    if($email->send()){
 			    	Session::set_flash('success', 'Your email has been successfully sent!');
 			    }else{

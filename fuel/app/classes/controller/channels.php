@@ -6,15 +6,7 @@ class Controller_Channels extends Controller_Template
 	public function action_index()
 	{
 
-		/*	URL TEMPLATES (delete later)
-		//https://api.twitch.tv/kraken/streams?game=Minecraft
-		//$data = json_decode(file_get_contents("https://api.twitch.tv/kraken/search/games?q=Minecraft&type=suggest"));
-		//https://api.twitch.tv/kraken/search/games?q=Minecraft&type=suggest */
-
-		$facebook = new Facebook(array(
-	  	'appId' => '515649145162571',
-	  	'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-		));
+		require APPPATH.'likestv.php';
 
 		// Twitch TV Client ID
 		$ttvclientid = '563pl149qc2s3obor1d7rmm2xuu2io0';
@@ -37,8 +29,10 @@ class Controller_Channels extends Controller_Template
 		$data = array();
 		$sessionlogout = 'http://likestv.gopagoda.com/logout';
 		
+		// If user is logged in:
 		if ($user){
 
+			// Logout url is set for navbar
 			$data['logoutUrl'] = $facebook->getLogoutUrl( array('next' => $sessionlogout));
 
 		try {
@@ -82,7 +76,7 @@ class Controller_Channels extends Controller_Template
 
 		foreach($gamelist as $gamename){
 
-			// This is a temporary throttle to the data for testing. Performance enhancements coming to improve this in the future.
+			// This is a temporary throttle to the data. Performance enhancements coming to improve this in the future.
 			if ($counter > 15){break;}
 
 			// Spaces are replaced with pluses
@@ -93,6 +87,7 @@ class Controller_Channels extends Controller_Template
 			$apidata = json_decode(file_get_contents('https://api.twitch.tv/kraken/search/games?q='.$gamename.'&type=suggest', false, stream_context_create($apiparams)));
 
 			// Each game returned from the above call is pushed into $refinelist
+			// ONLY if it is not in the filter and not already in $refinelist
 			foreach($apidata->games as $game){
 				if (!in_array($game->name, $filter)&& !in_array($game->name,$refinelist)) {
 					array_push($refinelist, $game->name);
@@ -123,6 +118,7 @@ class Controller_Channels extends Controller_Template
     }
 
 	else{
+		// If user is not logged in, channels redirects home
 		Response::redirect('home');
 	}
 		$data['streams'] = $streams;	
@@ -133,12 +129,11 @@ class Controller_Channels extends Controller_Template
 
 	public function action_filter()
 	{
+		// Channels goes to filter.php to perform filters then redirects back to channels.php
 		if (Input::post()){
 			if (Input::post('filter')){
-				$facebook = new Facebook(array(
-			  	'appId' => '515649145162571',
-			  	'secret' => '46c7fe25ef7c1c7e03059024049d676f',
-				));
+
+				require APPPATH.'likestv.php';
 
 				try {
 
@@ -153,6 +148,8 @@ class Controller_Channels extends Controller_Template
 
 				}
 				$addfilter = Input::post('filter');
+
+				// Creates database entry to be added to the database
 				$preference = Model_Preference::forge(array(
 					'username' => $user_profile["username"],
 					'filter' => $addfilter,
@@ -164,6 +161,7 @@ class Controller_Channels extends Controller_Template
 			}
 		}
 		else{
+			// Filter redirects to channels if there is no post
 			Response::redirect('channels/');
 		}
 	}
